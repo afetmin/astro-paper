@@ -22,13 +22,13 @@ export default defineConfig({
       [
         remarkCollapse,
         {
-          test: "Table of contents",
+          test: "目录",
         },
       ],
     ],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
-      themes: { light: "min-light", dark: "night-owl" },
+      themes: { light: "min-light", dark: "one-dark-pro" },
       wrap: true,
     },
   },
