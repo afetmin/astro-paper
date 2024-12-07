@@ -15,7 +15,8 @@ module.exports = {
     // Remove the following screen breakpoint or add other breakpoints
     // if one breakpoint is not enough for you
     screens: {
-      sm: "640px",
+      sm: '640px',
+      lg: "1180px",
     },
 
     extend: {
@@ -60,7 +61,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        mono: ["IBM Plex Mono", "monospace"],
+        mono: ["LXGW Wenkai", "monospace"],
       },
 
       typography: {

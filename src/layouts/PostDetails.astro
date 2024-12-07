@@ -3,10 +3,10 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Tag from "@components/Tag.astro";
+import TOC from "@components/TOC.astro";
 import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
-import ShareLinks from "@components/ShareLinks.astro";
 import { SITE } from "@config";
 
 export interface Props {
@@ -28,7 +28,7 @@ const {
   editPost,
 } = post.data;
 
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 
 const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src;
 const ogUrl = new URL(
@@ -73,9 +73,10 @@ const nextPost =
         ><path
           d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
         ></path>
-      </svg><span>Go back</span>
+      </svg><span>返回</span>
     </button>
   </div>
+
   <main id="main-content">
     <h1 transition:name={slugifyStr(title)} class="post-title">{title}</h1>
     <Datetime
@@ -86,6 +87,9 @@ const nextPost =
       editPost={editPost}
       postId={post.id}
     />
+    <!-- TOC -->
+    {!!headings?.length && <TOC headings={headings} />}
+
     <article id="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
     </article>
@@ -106,10 +110,10 @@ const nextPost =
             d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
           ></path>
         </svg>
-        <span>Back to Top</span>
+        <span>回到顶部</span>
       </button>
 
-      <ShareLinks />
+      <!-- <ShareLinks /> -->
     </div>
 
     <hr class="my-6 border-dashed" />
@@ -140,7 +144,7 @@ const nextPost =
               </>
             </svg>
             <div>
-              <span>Previous Post</span>
+              <span>前一篇</span>
               <div class="text-sm text-skin-accent/85">{prevPost.title}</div>
             </div>
           </a>
@@ -153,7 +157,7 @@ const nextPost =
             class="flex w-full justify-end gap-1 text-right hover:opacity-75 sm:col-start-2"
           >
             <div>
-              <span>Next Post</span>
+              <span>下一篇</span>
               <div class="text-sm text-skin-accent/85">{nextPost.title}</div>
             </div>
             <svg
