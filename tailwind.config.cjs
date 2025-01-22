@@ -1,3 +1,5 @@
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
     if (opacityValue !== undefined) {
@@ -12,6 +14,7 @@ module.exports = {
   darkMode: ["selector", "[data-theme='dark']"],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
+
     // Remove the following screen breakpoint or add other breakpoints
     // if one breakpoint is not enough for you
     screens: {
@@ -61,7 +64,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        mono: ["LXGW Wenkai", "monospace"],
+        mono: ["lucida grande", "lucida sans unicode", "lucida", "helvetica", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "monospace", ...defaultTheme.fontFamily.mono],
       },
 
       typography: {
