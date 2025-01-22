@@ -14,7 +14,9 @@ const {
     <a
       aria-label={`Scroll to section: ${text}`}
       class={`block line-clamp-2 hover:text-skin-accent text-nowrap max-w-[14rem] overflow-hidden overflow-ellipsis ${depth <= 2 ? "mt-4" : "mt-3 text-[0.82rem]"}`}
-      href={`#${slug}`}><span class="me-0.5"></span>{text}</a
+      href={`#${slug}`}
+      onclick="location.replace(this.href); return false;"
+      ><span class="me-0.5"></span>{text}</a
     >
     {
       !!children.length && (
