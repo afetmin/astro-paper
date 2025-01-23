@@ -22,80 +22,69 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 <Layout>
   <Header />
   <main id="main-content">
-    <section id="hero">
-      <h1>一条论</h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="rss-link"
-        aria-label="rss feed"
-        title="RSS Feed"
+  <section id="hero">
+    <h1>你好，👋</h1>
+    <a
+      target="_blank"
+      href="/rss.xml"
+      class="rss-link"
+      aria-label="rss feed"
+      title="RSS Feed"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+        ><path
+          d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+        ></path><path
+          d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+        ></path><circle cx="6" cy="18" r="2"></circle>
+      </svg>
+      <span class="sr-only">RSS Feed</span>
+    </a>
+
+    <p>🎉 嘿，你好呀！欢迎来到我的技术小天地！</p>
+    <p>
+      这是一个由
+      <LinkButton
+        href="https://astro.build"
+        className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
-        </svg>
-        <span class="sr-only">RSS Feed</span>
-      </a>
-
-      <p>
-        这是一个由 
-        <LinkButton 
-          href="https://astro.build"
-          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-        >
-          Astro
-        </LinkButton>
-        驱动的博客，主题使用的是
-        <LinkButton 
-          href="https://github.com/satnaing/astro-paper"
-          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-        >
-          Astro Paper
-        </LinkButton>
-        。用于分享我对技术、设计和生活的见解。
-      </p>
-      <p>
-        希望你能在这里找到有用的信息，如果你有任何问题或建议，请随时联系我。
-      </p>
-      {
-        // only display if at least one social link is enabled
-        socialCount > 0 && (
-          <div class="social-wrapper">
-            <div class="social-links">你可以在这里找到我:</div>
-            <Socials />
-          </div>
-        )
-      }
-    </section>
-
-    <Hr />
-
+        Astro
+      </LinkButton>
+      驱动的博客，主题使用的是
+      <LinkButton
+        href="https://github.com/satnaing/astro-paper"
+        className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
+      >
+        Astro Paper
+      </LinkButton>
+      。
+    </p>
+    <p>
+      <b>📚 我会分享： </b>
+      <ul>
+        <li class="mb-2 ml-6">💻 编程技巧与实战经验</li>
+        <li class="mb-2 ml-6">🛠️ 工具推荐与效率提升</li>
+        <li class="mb-2 ml-6">🧠 技术思考与学习笔记</li>
+      </ul>
+      <p>🔍 随便逛逛，说不定会发现让你眼前一亮的东西哦！</p>
+      <p>📩 如果有任何想法或问题，随时欢迎留言或联系我~ 🌈</p>
+    </p>
     {
-      featuredPosts.length > 0 && (
-        <>
-          <section id="featured">
-            <h2>最新功能</h2>
-            <ul>
-              {featuredPosts.map(({ data, slug }) => (
-                <Card
-                  href={`/posts/${slug}/`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-              ))}
-            </ul>
-          </section>
-          {recentPosts.length > 0 && <Hr />}
-        </>
+      // only display if at least one social link is enabled
+      socialCount > 0 && (
+        <div class="social-wrapper">
+          <div class="social-links">你可以在这里找到我:</div>
+          <Socials />
+        </div>
       )
     }
+  </section>
 
-    {
-      recentPosts.length > 0 && (
+  <Hr />
+
+  {
+    recentPosts.length > 0 && (
+      <>
         <section id="recent-posts">
           <h2>最新文章</h2>
           <ul>
@@ -111,23 +100,42 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             )}
           </ul>
         </section>
-      )
-    }
+        {featuredPosts.length > 0 && <Hr />}
+      </>
+    )
+  }
 
-    <div class="all-posts-btn-wrapper">
-      <LinkButton href="/posts/" className="flex justify-center">
-        查看所有文章
-        <svg xmlns="http://www.w3.org/2000/svg"
-          ><path
-            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-          ></path>
-        </svg>
-      </LinkButton>
-    </div>
+  {
+    featuredPosts.length > 0 && (
+      <section id="featured">
+        <h2>最新功能</h2>
+        <ul>
+          {featuredPosts.map(({ data, slug }) => (
+            <Card
+              href={`/posts/${slug}/`}
+              frontmatter={data}
+              secHeading={false}
+            />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <div class="all-posts-btn-wrapper">
+    <LinkButton href="/posts/" className="flex justify-center">
+      查看所有文章
+      <svg xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+        ></path>
+      </svg>
+    </LinkButton>
+  </div>
   </main>
-
-  <Footer />
 </Layout>
+
+<Footer />
 
 <style>
   /* ===== Hero Section ===== */

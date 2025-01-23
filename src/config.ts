@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "Rion",
   profile: "",
   desc: "从HTML、CSS到JavaScript，以及流行的框架和工具（如React、Vue），我会记录我的学习过程、项目实践和技术心得。",
-  title: "一条论's Blog",
+  title: "DevDino 🦖",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 5,
