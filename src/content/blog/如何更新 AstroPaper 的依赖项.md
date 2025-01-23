@@ -5,7 +5,6 @@ pubDatetime: 2023-07-20T15:33:05.569Z
 slug: how-to-update-dependencies
 featured: true
 draft: false
-ogImage: /assets/forrest-gump-quote.webp
 tags:
   - astro
 description: 如何更新项目依赖项和 AstroPaper 模板。
