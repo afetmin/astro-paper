@@ -1,9 +1,9 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
-import remarkToc from "remark-toc";
 import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
+import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,6 +18,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [
       // [remarkToc, { heading: '目录' }],
+      remarkReadingTime,
     ],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
