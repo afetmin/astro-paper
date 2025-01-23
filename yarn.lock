@@ -1484,7 +1484,7 @@ astro-eslint-parser@^1.0.2, astro-eslint-parser@^1.0.3:
     is-glob "^4.0.3"
     semver "^7.3.8"
 
-astro@^4.16.3:
+astro@^4.16.18:
   version "4.16.18"
   resolved "https://registry.npmmirror.com/astro/-/astro-4.16.18.tgz#c7db47d5554d865543d6917f42b5129819c6bc88"
   integrity sha512-G7zfwJt9BDHEZwlaLNvjbInIw2hPryyD654314KV/XT34pJU6SfN1S+mWa8RAkALcZNJnJXCJmT3JXLQStD3Lw==
