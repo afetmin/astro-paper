@@ -1,7 +1,9 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
+import { defineConfig } from "astro/config";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 import { SITE } from "./src/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
@@ -21,6 +23,10 @@ export default defineConfig({
     remarkPlugins: [
       // [remarkToc, { heading: '目录' }],
       remarkReadingTime,
+      remarkMath,
+    ],
+    rehypePlugins: [
+      rehypeKatex,
     ],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes

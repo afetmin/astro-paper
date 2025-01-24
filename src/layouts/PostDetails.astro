@@ -9,6 +9,7 @@ import Comments from "@components/Comments";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import { SITE } from "@config";
+import "/node_modules/katex/dist/katex.min.css";
 
 export interface Props {
   post: CollectionEntry<"blog">;
