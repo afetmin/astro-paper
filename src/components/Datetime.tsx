@@ -52,7 +52,7 @@ export default function Datetime({
           pubDatetime={pubDatetime}
           modDatetime={modDatetime}
         />
-        <span> | 阅读时间: {readingTime}</span>
+        {readingTime && <span> | 阅读时间: {readingTime}</span>}
         {size === "lg" && <EditPost editPost={editPost} postId={postId} />}
       </span>
     </div>
