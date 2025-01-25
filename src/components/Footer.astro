@@ -1,6 +1,9 @@
 ---
 import Hr from "./Hr.astro";
-import Socials from "./Socials.astro";
+// import Socials from "./Socials.astro";
+import { Image } from "astro:assets";
+import pageViewIcon from "../assets/PageView.svg";
+import userViewIcon from "../assets/UserView.svg";
 
 const currentYear = new Date().getFullYear();
 
@@ -14,7 +17,17 @@ const { noMarginTop = false } = Astro.props;
 <footer class={`${noMarginTop ? "" : "mt-auto"}`}>
   <Hr noPadding />
   <div class="footer-wrapper">
-    <Socials centered />
+    <div>
+      <span id="busuanzi_container_site_pv">
+        <Image class="icon-tabler" src={pageViewIcon} alt="page-view" />
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+      <span id="busuanzi_container_site_uv">
+        <Image class="icon-tabler" src={userViewIcon} alt="user-view" />
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </div>
+    <!-- <Socials centered /> -->
     <div class="copyright-wrapper">
       <span>Copyright &#169; {currentYear}</span>
       <span class="separator">&nbsp;|&nbsp;</span>
@@ -41,5 +54,9 @@ const { noMarginTop = false } = Astro.props;
   }
   .separator {
     @apply hidden sm:inline;
+  }
+
+  img.icon-tabler {
+    @apply inline-block h-6 w-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110;
   }
 </style>

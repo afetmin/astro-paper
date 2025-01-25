@@ -1,5 +1,6 @@
 import { LOCALE, SITE } from "@config";
 import type { CollectionEntry } from "astro:content";
+import postViewIcon from "../assets/PostView.svg";
 
 interface DatetimesProps {
   pubDatetime: string | Date;
@@ -15,6 +16,7 @@ interface Props extends DatetimesProps, EditPostProps {
   size?: "sm" | "lg";
   className?: string;
   readingTime?: string;
+  needPostView?: boolean;
 }
 
 export default function Datetime({
@@ -25,6 +27,7 @@ export default function Datetime({
   editPost,
   postId,
   readingTime,
+  needPostView = false,
 }: Props) {
   return (
     <div
@@ -32,9 +35,8 @@ export default function Datetime({
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className={`${
-          size === "sm" ? "scale-90" : "scale-100"
-        } inline-block h-6 w-6 min-w-[1.375rem] fill-skin-base`}
+        className={`${size === "sm" ? "scale-90" : "scale-100"
+          } inline-block h-6 w-6 min-w-[1.375rem] fill-skin-base`}
         aria-hidden="true"
       >
         <path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path>
@@ -54,6 +56,18 @@ export default function Datetime({
         />
         {readingTime && <span> | 阅读时间: {readingTime}</span>}
         {size === "lg" && <EditPost editPost={editPost} postId={postId} />}
+
+        {needPostView && (
+          <span id="busuanzi_container_page_pv">
+            &nbsp; | <img
+              className="inline-block h-5 w-5 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110 mb-1"
+              src={postViewIcon.src}
+              alt='post-view'
+            />
+            <span id="busuanzi_value_page_pv"></span>
+          </span>
+        )}
+
       </span>
     </div>
   );
@@ -71,7 +85,7 @@ const FormattedDatetime = ({ pubDatetime, modDatetime }: DatetimesProps) => {
   });
 
   return (
-      <time dateTime={myDatetime.toISOString()}>{date}</time>
+    <time dateTime={myDatetime.toISOString()}>{date}</time>
   );
 };
 
