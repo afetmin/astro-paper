@@ -6,19 +6,16 @@ import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import { SITE } from "./src/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
-  integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    react(),
-    sitemap({
-      filter: page => SITE.showArchives || !page.endsWith("/archives"),
-    }),
-  ],
+  integrations: [tailwind({
+    applyBaseStyles: false,
+  }), react(), sitemap({
+    filter: page => SITE.showArchives || !page.endsWith("/archives"),
+  }), mdx()],
   markdown: {
     remarkPlugins: [
       // [remarkToc, { heading: '目录' }],
