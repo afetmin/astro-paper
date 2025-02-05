@@ -58,13 +58,13 @@ export default function Datetime({
         {size === "lg" && <EditPost editPost={editPost} postId={postId} />}
 
         {needPostView && (
-          <span id="busuanzi_container_page_pv">
+          <span>
             &nbsp; | <img
               className="inline-block h-5 w-5 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110 mb-1"
               src={postViewIcon.src}
               alt='post-view'
             />
-            <span id="busuanzi_value_page_pv"></span>
+            <span id="vercount_value_page_pv"></span>
           </span>
         )}
 
